@@ -2,6 +2,7 @@ import requests
 import CloudFlare
 import os
 import sys
+import clicker
 
 def get_ip():
     return requests.get("https://ifconfig.me").text
