@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cfddns"
-version = "0.2"
+version = "0.3"
 description = ""
 authors = ["alvaro <garciajaenalvaro@gmail.com>"]
 
