@@ -2,7 +2,7 @@ import requests
 import CloudFlare
 import os
 import sys
-import clicker
+import click
 
 def get_ip():
     return requests.get("https://ifconfig.me").text
@@ -38,11 +38,9 @@ def update_record(zone, subdomain, ip):
         else:
             print("No need to update")
 
-def main():
-    if len(sys.argv) == 2:
-        subdomain = sys.argv[1]
-    else:
-        sys.exit(1)
+@click.command()
+@click.argument("subdomain")
+@click.option("-i", "--ip", type=str, default=get_ip(), show_default="public IP", help="Specify record IP")
+def main(subdomain, ip):
     zone = ".".join(subdomain.split(".")[-2:])
-    ip = get_ip()
     update_record(zone, subdomain, ip)
